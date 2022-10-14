@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--    Root menu-->
+    <menuitem id="student_menu" name="Student" sequence="1"/>
+
+    <!--    student sub menu -->
+    <menuitem id="student_root_menu" name="Student Data" parent="student_menu"/>
+    <menuitem id="student_root_all_menu" name="Student Data" parent="student_root_menu"
+              action="action_student_data_view" sequence="1"/>
+    <menuitem id="student_male_root_menu" name="Male Data" parent="student_root_menu"
+              action="action_student_male_data_view"/>
+    <menuitem id="student_female_root_menu" name="Female Data" parent="student_root_menu"
+              action="action_student_female_data_view"/>
+
+    <!--    Subject sub menu-->
+    <!--    <menuitem id="subject_sub_menu" name="Subject Data" parent="student_menu" action="action_subject_data_view"/>-->
+
+    <!--    Class root menu-->
+    <menuitem id="class_sub_menu" name="Class Details" parent="student_menu" action="action_class_data_view"
+              groups="student.student_group_user"/>
+
+    <!--    Fees menu-->
+    <menuitem id="fees_root_menu" parent="student_menu" action="action_fees_data_view" name="Fees Updates"/>
+    <!--    &lt;!&ndash;    <menuitem id="fees_sub_menu" name="Fees Data" parent="fees_root_menu" action="action_fees_data_view"/>&ndash;&gt;-->
+
+    <menuitem id="mark_root_menu" parent="student_menu" action="action_mark_data_view" name="Marks"/>
+
+    <menuitem id="cls_root_menu" parent="student_menu" action="action_class_info_view" name="student class"/>
+
+
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="fees_list_view" model="ir.ui.view">
+        <field name="name">fees.list.view</field>
+        <field name="model">fees.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="fees"/>
+                <field name="submitted_fees"/>
+                <field name="remaining_fees"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fees_form_view" model="ir.ui.view">
+        <field name="name">fees.form.view</field>
+        <field name="model">fees.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="2" col="3">
+                        <field name="name"/>
+
+                        <field name="fees"/>
+
+                    </group>
+                    <group>
+                        <group rowspan="2">
+                            <field name="submit_fees"/>
+                            <field name="submitted_fees"/>
+                            <field name="remaining_fees"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action menu for showing student data -->
+    <record id="action_fees_data_view" model="ir.actions.act_window">
+        <field name="name">fees Data</field>
+        <field name="res_model">fees.data</field>
+        <field name="view_mode">tree,graph,form</field>
+    </record>
+
+      <!--    Graph Views-->
+    <record id="fees_pivot_view" model="ir.ui.view">
+        <field name="name">fees.pivot.view</field>
+        <field name="model">fees.data</field>
+        <field name="arch" type="xml">
+            <graph type="pie">
+                <field name="name"/>
+                <field name="submitted_fees"/>
+            </graph>
+        </field>
+    </record>
+
+</odoo>

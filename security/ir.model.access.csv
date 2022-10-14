@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_data,access_student_data,model_student_data,base.group_user,1,1,1,1
+access_subject_data,access_subject_data,model_subject_data,base.group_user,1,1,1,1
+access_class_data,access_class_data,model_class_data,base.group_user,1,1,1,1
+access_fees_data,access_fees_data,model_fees_data,,1,1,1,1
+access_mark_data,access_mark_data,model_mark_data,base.group_user,1,1,1,1
+access_class_info,access_class_info,model_class_info,base.group_user,1,1,1,1
+access_student_report_wizard,access_student.report.wizard,model_student_report_wizard,,1,1,1,1

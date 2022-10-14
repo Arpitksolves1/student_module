@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="class_lis_view" model="ir.ui.view">
+        <field name="name">class.lis.view</field>
+        <field name="model">class.info</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="subject1"/>
+                <field name="subject2"/>
+                <field name="subject3"/>
+                <field name="subject4"/>
+                <field name="subject5"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="class_info_view" model="ir.ui.view">
+        <field name="name">class.info.view</field>
+        <field name="model">class.info</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="2" col="3">
+                        <field name="name"/>
+                        <field name="student_name"/>
+                        <field name="subject1"/>
+                        <field name="subject2"/>
+                        <field name="subject3"/>
+                        <field name="subject4"/>
+                        <field name="subject5"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action menu for showing class data -->
+    <record id="action_class_info_view" model="ir.actions.act_window">
+        <field name="name">class info</field>
+        <field name="res_model">class.info</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

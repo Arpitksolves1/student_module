@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    # List view-->
+    <record id="student_list_view" model="ir.ui.view">
+        <field name="name">student.list.view</field>
+        <field name="model">student.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="dob"/>
+                <field name="gender"/>
+                <field name="mobile"/>
+                <field name="student_class_id"/>
+                <field name="student_fees"/>
+                <field name="student_submitted_fees"/>
+                <field name="student_remaining_fees"/>
+                <field name="db_user_id"/>
+            </tree>
+        </field>
+    </record>
+
+    # Form view
+    <record id="student_form_view" model="ir.ui.view">
+        <field name="name">student.form.view</field>
+        <field name="model">student.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <button name='%(student.action_student_report)d' string="Excel Student Report" type="action"
+                        class="oe_highlight"/>
+                <sheet>
+                    <group colspan="4" col="4" string="Student Info">
+                        <group string="Student Info">
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="dob"/>
+                            <field name="gender"/>
+                            <field name="mobile"
+                                   attrs="{'invisible':[('age','=',19)],'readonly':[('name', '=', 'arav')]}"/>
+                            <field name="db_user_id"/>
+                        </group>
+                        <group string="Class Info">
+                            <field name="student_class_id"/>
+                            <field name="student_fees"/>
+                            <field name="student_submitted_fees"/>
+                            <field name="student_remaining_fees"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Marks Details">
+                            <field name="student_mark_line">
+                                <tree editable="bottom">
+                                    <field name="math"/>
+                                    <field name="physics"/>
+                                    <field name="chemistry"/>
+                                    <field name="english"/>
+                                    <field name="hindi"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Subject Details">
+                            <field name="class_line">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="subject1"/>
+                                    <field name="subject2"/>
+                                    <field name="subject3"/>
+                                    <field name="subject4"/>
+                                    <field name="subject5"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    # Search view
+    <record id="student_search_view" model="ir.ui.view">
+        <field name="name">student.search.view</field>
+        <field name="model">student.data</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="dob"/>
+                <field name="student_class_id"/>
+                <filter string="Class" name="student_class_id" domain="[('student_class_id', '=', 'Class 12')]"/>
+                <filter string="Fees" name="student_remaining_fees" domain="[('student_remaining_fees', '>', 10000)]"/>
+                <filter string="Female" name="gender" domain="[('gender', '=', 'female')]"/>
+                <filter string="Male" name="gender" domain="[('gender', '=', 'male')]"/>
+                <group expand="0" string="Group by">
+                    <filter string="Class" name="student_class_id"
+                            domain="[]" context="{'group_by' : 'student_class_id' }"/>
+                    <filter string="Gender" name="gender"
+                            domain="[]" context="{'group_by' : 'gender' }"/>
+                    <filter string="Age" name="age"
+                            domain="[]" context="{'group_by' : 'age' }"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action menu for showing student data -->
+    <record id="action_student_data_view" model="ir.actions.act_window">
+        <field name="name">Student Data</field>
+        <field name="res_model">student.data</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
+    </record>
+
+    <!--    Form and Tree Views-->
+    <record id="action_student_male_data_view" model="ir.actions.act_window">
+        <field name="name">Male Data</field>
+        <field name="res_model">student.data</field>
+        <field name="view_mode">form</field>
+        <field name="domain">[('gender', '=', 'male')]</field>
+        <field name="context">{'default_gender': 'male'}</field>
+    </record>
+
+    <!--    Domain and Context-->
+    <record id="action_student_female_data_view" model="ir.actions.act_window">
+        <field name="name">Female Data</field>
+        <field name="res_model">student.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('gender', '=', 'female')]</field>
+        <field name="context">{'default_gender': 'female'}</field>
+    </record>
+
+    <!--    Pivot View-->
+    <record id="student_pivot_view" model="ir.ui.view">
+        <field name="name">student.pivot.view</field>
+        <field name="model">student.data</field>
+        <field name="arch" type="xml">
+            <pivot string="Student Sheet">
+                <field name="name" type="row"/>
+                <field name="gender" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!--    Graph Views-->
+    <record id="student_graph_view" model="ir.ui.view">
+        <field name="name">student.graph.view</field>
+        <field name="model">student.data</field>
+        <field name="arch" type="xml">
+            <graph string="Gender" stacked="False">
+                <field name="student_class_id"/>
+                <field name="name"/>
+                <field name="gender"/>
+            </graph>
+        </field>
+    </record>
+
+
+<!--     &lt;!&ndash;    Gantt Views&ndash;&gt;-->
+<!--    <record id="student_gantt_view" model="ir.ui.view">-->
+<!--        <field name="name">student.gantt.view</field>-->
+<!--        <field name="model">student.data</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <gantt date_start="" date_stop="" default_group_by="gender">-->
+
+<!--            </gantt>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+</odoo>

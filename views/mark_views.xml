@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mark_list_view" model="ir.ui.view">
+        <field name="name">mark.list.view</field>
+        <field name="model">mark.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="math"/>
+                <field name="physics"/>
+                <field name="chemistry"/>
+                <field name="english"/>
+                <field name="hindi"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mark_form_view" model="ir.ui.view">
+        <field name="name">mark.form.view</field>
+        <field name="model">mark.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="2" col="3">
+                        <field name="name"/>
+                        <field name="math"/>
+                        <field name="physics"/>
+                        <field name="chemistry"/>
+                        <field name="english"/>
+                        <field name="hindi"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action menu for showing student data -->
+    <record id="action_mark_data_view" model="ir.actions.act_window">
+        <field name="name">mark Data</field>
+        <field name="res_model">mark.data</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <!--    Graph Views-->
+    <record id="mark_pivot_view" model="ir.ui.view">
+        <field name="name">mark.pivot.view</field>
+        <field name="model">mark.data</field>
+        <field name="arch" type="xml">
+            <graph string="Marks Sheet">
+            </graph>
+        </field>
+    </record>
+
+
+</odoo>

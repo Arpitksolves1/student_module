@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="student_report_excel_temp" model="ir.actions.report">
+        <field name="name">student excel template</field>
+        <field name="model">student.data</field>
+        <field name="report_name">student.student_excel_template</field>
+        <field name="report_file">student.student_excel_template</field>
+        <field name="report_type">xlsx</field>
+    </record>
+
+</odoo>
